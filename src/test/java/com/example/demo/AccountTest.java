@@ -31,4 +31,11 @@ public class AccountTest {
         assertEquals(55d, account.getBalance());
     }
 
+    @Test
+    void withdrawAmount_shouldDecresaseBalance_caseBalanceGraterThenAmount(){
+        Account account =new Account(100d);
+        account.withdrawAmount(90d);
+
+        assertEquals(10d,account.getBalance());
+    }
 }

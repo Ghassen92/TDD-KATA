@@ -11,4 +11,7 @@ public class Account {
     public void depositAmount(double amount) {
         balance += amount;
     }
+
+    public void withdrawAmount(double v) {
+    }
 }
