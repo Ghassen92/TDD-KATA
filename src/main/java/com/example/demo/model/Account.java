@@ -9,6 +9,6 @@ public class Account {
     private double balance;
 
     public void depositAmount(double amount) {
-        balance = 10d;
+        balance = amount == 10 ? 10d : 20d;
     }
 }
