@@ -8,18 +8,27 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class AccountTest {
 
     @Test
-    void depositAmount_shouldIncreaseBalance_case10(){
-        Account account =new Account(0d);
+    void depositAmount_shouldIncreaseBalance_case10() {
+        Account account = new Account(0d);
         account.depositAmount(10d);
 
-        assertEquals(10d,account.getBalance());
+        assertEquals(10d, account.getBalance());
     }
 
     @Test
-    void depositAmount_shouldIncreaseBalance_case20(){
-        Account account =new Account(0d);
+    void depositAmount_shouldIncreaseBalance_case20() {
+        Account account = new Account(0d);
         account.depositAmount(20d);
 
-        assertEquals(20d,account.getBalance());
+        assertEquals(20d, account.getBalance());
     }
+
+    @Test
+    void depositAmount_shouldIncreaseBalance_case50() {
+        Account account = new Account(5d);
+        account.depositAmount(50d);
+
+        assertEquals(55d, account.getBalance());
+    }
+
 }
