@@ -61,4 +61,17 @@ public class AccountTest {
         assertNotNull(account.getTransactions());
         assertEquals(transaction, account.getTransactions().get(0));
     }
+
+    @Test
+    void checkHistory_shouldListWithDrawOperation() {
+        Account account = new Account( 100, 200d);
+        Transaction transaction = new Transaction(EOperation.WithDraw, 150d, -50d);
+
+        account.depositAmount(150d);
+
+        assertNotNull(account.getTransactions());
+        assertEquals(1, account.getTransactions().size());
+        assertEquals(transaction, account.getTransactions().get(0));
+
+    }
 }
