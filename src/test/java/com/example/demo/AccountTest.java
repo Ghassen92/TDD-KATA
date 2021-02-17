@@ -67,7 +67,7 @@ public class AccountTest {
         Account account = new Account( 100, 200d);
         Transaction transaction = new Transaction(EOperation.WithDraw, 150d, -50d);
 
-        account.depositAmount(150d);
+        account.withdrawAmount(150d);
 
         assertNotNull(account.getTransactions());
         assertEquals(1, account.getTransactions().size());
