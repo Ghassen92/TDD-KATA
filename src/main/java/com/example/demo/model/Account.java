@@ -7,6 +7,8 @@ import lombok.Getter;
 @Getter
 public class Account {
     private double balance;
+    //découvert Bancaire
+    private double overdraft;
 
     public void depositAmount(double amount) {
         balance += amount;
