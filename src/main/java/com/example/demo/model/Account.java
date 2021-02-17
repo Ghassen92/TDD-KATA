@@ -6,6 +6,8 @@ import lombok.Getter;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.demo.model.EOperation.Deposit;
+
 @Getter
 public class Account {
     private double balance;
@@ -20,6 +22,8 @@ public class Account {
 
     public void depositAmount(double amount) {
         balance += amount;
+        if (transactions == null) transactions = new ArrayList<>();
+        transactions.add(new Transaction(Deposit, amount, balance));
     }
 
     public void withdrawAmount(double amount) {
