@@ -4,6 +4,10 @@ import com.example.demo.model.Account;
 import com.example.demo.model.EOperation;
 import com.example.demo.model.Transaction;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+
+import java.util.Arrays;
+import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -54,7 +58,7 @@ public class AccountTest {
     @Test
     void checkHistory_shouldListDepositOperation() {
         Account account = new Account( 0, 200d);
-        Transaction transaction = new Transaction(EOperation.Deposit, 100d, 100d);
+        Transaction transaction = new Transaction(EOperation.Deposit,null, 100d, 100d);
 
         account.depositAmount(100d);
 
@@ -65,7 +69,7 @@ public class AccountTest {
     @Test
     void checkHistory_shouldListWithDrawOperation() {
         Account account = new Account( 100, 200d);
-        Transaction transaction = new Transaction(EOperation.WithDraw, 150d, -50d);
+        Transaction transaction = new Transaction(EOperation.WithDraw,null,150d, -50d);
 
         account.withdrawAmount(150d);
 
@@ -73,5 +77,19 @@ public class AccountTest {
         assertEquals(1, account.getTransactions().size());
         assertEquals(transaction, account.getTransactions().get(0));
 
+    }
+
+    @Test
+    void checkHistory_shouldListAllOperationsWithDates() {
+        Account account = new Account(0, 200d);
+        Transaction transactionDeposit = new Transaction(EOperation.Deposit, new Date(), 100d, 100d);
+        Transaction transactionWithDraw = new Transaction(EOperation.WithDraw, new Date(), 40d, 60d);
+
+        account.depositAmount(100);
+        account.withdrawAmount(40d);
+
+        assertNotNull(account.getTransactions());
+        assertEquals(transactionDeposit.getDate(),account.getTransactions().get(0).getDate());
+        assertEquals(Arrays.asList(transactionDeposit, transactionWithDraw), account.getTransactions());
     }
 }
