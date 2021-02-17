@@ -15,6 +15,7 @@ public class Account {
     }
 
     public void withdrawAmount(double amount) {
-        balance-=amount;
+        if (balance + overdraft < amount) throw new RuntimeException("Overdraft Depassed");
+        balance -= amount;
     }
 }
