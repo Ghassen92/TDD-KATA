@@ -12,6 +12,7 @@ public class Account {
         balance += amount;
     }
 
-    public void withdrawAmount(double v) {
+    public void withdrawAmount(double amount) {
+        balance-=amount;
     }
 }
