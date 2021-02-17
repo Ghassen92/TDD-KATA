@@ -1,10 +1,11 @@
 package com.example.demo;
 
 import com.example.demo.model.Account;
+import com.example.demo.model.EOperation;
+import com.example.demo.model.Transaction;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AccountTest {
 
@@ -48,5 +49,16 @@ public class AccountTest {
                     account.withdrawAmount(400d);
                 });
 
+    }
+
+    @Test
+    void checkHistory_shouldListDepositOperation() {
+        Account account = new Account( 0, 200d);
+        Transaction transaction = new Transaction(EOperation.Deposit, 100d, 100d);
+
+        account.depositAmount(100d);
+
+        assertNotNull(account.getTransactions());
+        assertEquals(transaction, account.getTransactions().get(0));
     }
 }
