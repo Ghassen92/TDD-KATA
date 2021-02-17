@@ -24,14 +24,12 @@ public class Account {
 
     public void depositAmount(double amount) {
         balance += amount;
-        if (transactions == null) transactions = new ArrayList<>();
         transactions.add(new Transaction(Deposit,new Date(), amount, balance));
     }
 
     public void withdrawAmount(double amount) {
         if (balance + overdraft < amount) throw new RuntimeException("Overdraft Depassed");
         balance -= amount;
-        if (transactions == null) transactions = new ArrayList<>();
         transactions.add(new Transaction( WithDraw,new Date(), amount, balance));
     }
 }
