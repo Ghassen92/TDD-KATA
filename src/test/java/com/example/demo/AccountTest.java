@@ -4,7 +4,6 @@ import com.example.demo.model.Account;
 import com.example.demo.model.EOperation;
 import com.example.demo.model.Transaction;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -58,7 +57,7 @@ public class AccountTest {
     @Test
     void checkHistory_shouldListDepositOperation() {
         Account account = new Account( 0, 200d);
-        Transaction transaction = new Transaction(EOperation.Deposit,null, 100d, 100d);
+        Transaction transaction = new Transaction(EOperation.Deposit,new Date(), 100d, 100d);
 
         account.depositAmount(100d);
 
@@ -69,7 +68,7 @@ public class AccountTest {
     @Test
     void checkHistory_shouldListWithDrawOperation() {
         Account account = new Account( 100, 200d);
-        Transaction transaction = new Transaction(EOperation.WithDraw,null,150d, -50d);
+        Transaction transaction = new Transaction(EOperation.WithDraw,new Date(),150d, -50d);
 
         account.withdrawAmount(150d);
 
