@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.demo.model.EOperation.Deposit;
+import static com.example.demo.model.EOperation.WithDraw;
 
 @Getter
 public class Account {
@@ -29,5 +30,7 @@ public class Account {
     public void withdrawAmount(double amount) {
         if (balance + overdraft < amount) throw new RuntimeException("Overdraft Depassed");
         balance -= amount;
+        if (transactions == null) transactions = new ArrayList<>();
+        transactions.add(new Transaction( WithDraw, amount, balance));
     }
 }
