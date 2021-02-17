@@ -14,4 +14,12 @@ public class AccountTest {
 
         assertEquals(10d,account.getBalance());
     }
+
+    @Test
+    void depositAmount_shouldIncreaseBalance_case20(){
+        Account account =new Account(0d);
+        account.depositAmount(20d);
+
+        assertEquals(20d,account.getBalance());
+    }
 }
